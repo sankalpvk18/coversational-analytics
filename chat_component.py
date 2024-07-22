@@ -9,7 +9,7 @@ def initialize_firebase():
         cred = credentials.Certificate(FIREBASE_CERT_CONFIG)
         firebase_admin.initialize_app(
             cred,
-            {"databaseURL": "https://conversationalbi-default-rtdb.firebaseio.com"},
+            {"databaseURL": "https://conversational-analytics-4f8b7-default-rtdb.firebaseio.com"},
         )
 
 

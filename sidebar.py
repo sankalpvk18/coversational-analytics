@@ -10,8 +10,11 @@ def initialize_firebase():
         cred = credentials.Certificate(FIREBASE_CERT_CONFIG)
         firebase_admin.initialize_app(
             cred,
-            {"databaseURL": "https://conversationalbi-default-rtdb.firebaseio.com"},
+            {"databaseURL": "https://conversational-analytics-4f8b7-default-rtdb.firebaseio.com"},
         )
+
+        # cred = credentials.Certificate("/Users/sankalp/Downloads/conversational-analytics-4f8b7-firebase-adminsdk-sllxb-1c347f0725.json")
+        # firebase_admin.initialize_app(cred)
 
 
 initialize_firebase()
