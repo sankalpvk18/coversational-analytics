@@ -1,0 +1,22 @@
+Column Name,Column Description,Data Type
+Row ID,No description available,int64
+Order ID,Unique identifier for each order,object
+Order Date,The date when the order was placed,object
+Ship Date,The date when the order was shipped,object
+Ship Mode,The mode of shipment for the order,object
+Customer ID,Unique identifier for each customer,object
+Customer Name,The name of the customer,object
+Segment,The market segment the customer belongs to,object
+Country,The country where the customer is located,object
+City,The city where the customer is located,object
+State,The state where the customer is located,object
+Postal Code,The postal code of the customer's location,int64
+Region,The region where the customer is located,object
+Product ID,Unique identifier for each product,object
+Category,The category the product belongs to,object
+Sub-Category,The sub-category the product belongs to,object
+Product Name,The name of the product,object
+Sales,The sales amount for the product,float64
+Quantity,The quantity of the product sold,int64
+Discount,The discount applied to the product,float64
+Profit,The profit made from the sale of the product,float64
