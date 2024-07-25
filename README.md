@@ -5,14 +5,17 @@
 Conversational Analytics is a Streamlit-based web application that allows users to explore and analyze sales data from a Superstore dataset using natural language queries. The application provides instant insights, visual trends, and detailed data analysis through a user-friendly interface.
 
 ## Features
-
-- **Instant Queries**: Ask questions and get SQL queries instantly. Example: "Show me the top 5 best-selling products."
-- **Visualize Trends**: See sales trends with beautiful charts.
+![Conversational Analytics](screenshots/conversational_analytics.png)
+![Chat_History](screenshots/chat_history.png)
+![Report_Generation](screenshots/report_1.png)
+![Report_Generation](screenshots/report_2.png)
+- **Instant Queries**: Effortlessly transform your questions into SQL queries and receive immediate responses.
+- **Visualize Trends**: Uncover sales trends through visually appealing and interactive charts.
 - **Gain Insights**: Discover hidden patterns and trends.
-- **Detailed Data**: Access organized tables for quick analysis.
-- **Chat History**: Select a conversation to load previous queries and insights.
-- **Report Generation**: Generate detailed reports from the analysis.
-- **Quick Analysis**: Perform quick analysis on the provided dataset.
+- **Detailed Data**: Access and analyze organized tables for in-depth data exploration.
+- **Chat History**: Keep track of your past queries and load previous conversations easily.
+- **Report Generation**: Generate reports based on selected parameters and download CSV files.
+- **Quick Analysis**: Conduct swift analysis on the dataset to obtain rapid insights.
 
 ## Installation
 
