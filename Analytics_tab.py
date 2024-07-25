@@ -47,11 +47,11 @@ def analytics_tab():
                 )
 
     with col1:
-        with st.container(height=580, border=True):
+        with st.container(height=500, border=True):
             chat_component(prompt, response, conv_key, def_message)
 
     with col2:
-        with st.container(height=580, border=False):
+        with st.container(height=500, border=False):
             with st.expander("Chart"):
                 chart_component(fig)
             with st.expander("Table"):
