@@ -5,9 +5,6 @@ from firebase_admin import credentials, db
 # Initialize Firebase app
 def initialize_firebase():
     cred = credentials.Certificate("secrets.json")
-    # firebase_admin.initialize_app(
-    #     cred, {"databaseURL": "https://conversationalbi-default-rtdb.firebaseio.com"}
-    # )
     firebase_admin.initialize_app(
         cred, {"databaseURL": "https://conversational-analytics-4f8b7-default-rtdb.firebaseio.com"}
     )

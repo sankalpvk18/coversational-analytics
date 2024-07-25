@@ -29,11 +29,11 @@ def analytics_tab():
         )
 
     with col1:
-        with st.container(height=450, border=True):
+        with st.container(height=580, border=True):
             chat_component(prompt, response, conv_key, def_message)
 
     with col2:
-        with st.container(height=450, border=False):
+        with st.container(height=580, border=False):
             with st.expander("Chart"):
                 chart_component(fig)
             with st.expander("Table"):
@@ -41,8 +41,13 @@ def analytics_tab():
             with st.expander("SQL Query"):
                 sql_component(response)
 
-            add_vertical_space(13)
-            col2_1, col2_2, col2_3 = st.columns([2, 1.65, 1.35], gap="large")
-            with col2_3:
-                if st.button("🔄 New Thread"):
-                    clear_conversation()
+            add_vertical_space(2)
+
+            if st.button("New Chat"):
+                clear_conversation()
+
+            # col2_1, col2_2, col2_3 = st.columns([2, 1.65, 1.35], gap="large")
+            # col2_1, col2_2, col2_3 = st.columns([4.5, 1, 1.35], gap="large")
+            # with col2_3:
+            #     if st.button("New Chat"):
+            #         clear_conversation()

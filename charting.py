@@ -1,5 +1,6 @@
 #new charting module
 import plotly.express as px
+import numpy as np
 
 def create_chart(df, chart_type, x_column, y_columns):
     """
@@ -17,7 +18,11 @@ def create_chart(df, chart_type, x_column, y_columns):
     if chart_type == 'line':
         fig = px.line(df, x=x_column, y=y_columns, title=f'Line Chart: {x_column} vs {y_columns}')
     elif chart_type == 'bar':
-        fig = px.bar(df, x=x_column, y=y_columns, title=f'Bar Chart: {x_column} vs {y_columns}')
+        if x_column == y_columns:
+            y_axis = np.ones(df.shape[0], dtype=int)
+            fig = px.bar(df, x=x_column, y=y_axis, barmode='group', title=f'Bar Chart: {x_column} vs {y_columns}')
+        else:
+            fig = px.bar(df, x=x_column, y=y_columns, title=f'Bar Chart: {x_column} vs {y_columns}')
     elif chart_type == 'pie':
         fig = px.pie(df, values=y_columns[0], names=x_column, title=f'Pie Chart: {x_column} vs {y_columns}')
     elif chart_type == 'stacked bar':

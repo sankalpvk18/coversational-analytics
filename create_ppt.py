@@ -6,7 +6,6 @@ import tempfile
 import tempfile
 import os
 
-# Assuming your project folder is named "MyProject"
 project_folder = os.getcwd()
 
 
@@ -61,9 +60,20 @@ def create_pptx(slides_data):
             ) as tmpfile:
                 chart_image_path = tmpfile.name
                 pio.write_image(chart, chart_image_path)
-                slide.shapes.add_picture(
-                    chart_image_path, Inches(1), Inches(5.5), Inches(8.5), Inches(3)
-                )
+                # slide.shapes.add_picture(
+                #     chart_image_path, Inches(1), Inches(5.5), Inches(8.5), Inches(3)
+                # )
+
+                # Calculate the position where the image will be placed
+                image_top = Inches(5.5)
+                max_image_height = prs.slide_height - image_top - Inches(1)  # 1 inch padding at the bottom
+
+                # Add picture to the slide or new slide if it doesn't fit
+                if max_image_height < Inches(3):  # Arbitrary height to determine if the image fits
+                    slide = prs.slides.add_slide(slide_layout)
+                    image_top = Inches(0)
+
+                pic = slide.shapes.add_picture(chart_image_path, Inches(0), image_top)
 
     # Save the presentation
     ppt_path = "presentation.pptx"

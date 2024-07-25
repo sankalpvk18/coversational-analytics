@@ -30,7 +30,7 @@ def quick_tab():
         result = run_quick_analysis(prompt)
 
     with col1:
-        with st.container(border=True, height=450):
+        with st.container(border=True, height=600):
             quick_chat_component(prompt, result, def_message)
 
     with col2:

@@ -4,23 +4,23 @@ import streamlit as st
 def default_component():
     # Example message with formatting and constrained line length
     message = """
-    ### Welcome to Superstore Sales Insight!
-\n##### Unlock the potential of our tool to easily explore and analyze sales data.
+    #### Welcome to Superstore Sales Insight!
+\n###### Unlock the potential of our tool to easily explore and analyze sales data.
 
-#### 💬 **Instant Queries:**
-##### Ask questions and get SQL queries instantly.\n
-##### For Example: "Show me the top 5 best-selling products"
+##### 💬 **Instant Queries:**
+###### Ask questions and get SQL queries instantly.\n
+###### For Example: "Show me the top 5 best-selling products"
 
-#### 📈 **Visualize Trends:**
-##### See sales trends with beautiful charts.
+##### 📈 **Visualize Trends:**
+###### See sales trends with beautiful charts.
 
-#### 💡 **Gain Insights:**
-##### Discover hidden patterns and trends.
+##### 💡 **Gain Insights:**
+###### Discover hidden patterns and trends.
 
-#### 📊 **Detailed Data:**
-##### Access organized tables for quick analysis.
+##### 📊 **Detailed Data:**
+###### Access organized tables for quick analysis.
 
-##### Empower your data-driven decision-making. Start exploring today!
+###### Empower your data-driven decision-making. Start exploring today!
     """
 
     # Write the formatted message to the Streamlit app
@@ -31,7 +31,7 @@ def default_component():
 
 def default_quick_component():
     message = """
-    ### Welcome to our Quick Anlysis tool
+    ### Welcome to our Quick Analysis tool
     \nHarness the power of our tool to effortlessly explore the data.
     
     🤖 Talk to your data! With our LLM, 

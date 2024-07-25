@@ -18,7 +18,7 @@ from Analytics_tab import analytics_tab
 from Meta_tab import meta_tab
 from Report_tab import report_tab
 from Quick_tab import quick_tab
-# from streamlit_extras.add_vertical_space import add_vertical_space
+from streamlit_extras.add_vertical_space import add_vertical_space
 
 if "filename" not in st.session_state:
     st.session_state.filename = ""
@@ -41,18 +41,18 @@ def home_page():
         meta_tab()
 
     with tab3:
-        col1, col2 = st.columns([0.85, 0.15])
+        col1, col2 = st.columns([0.90, 0.10])
         with col1:
             st.header("Report Generation")
         with col2:
-            # add_vertical_space(1)
+            add_vertical_space(1)
             # Read the CSV file
             with open("batch_input_template.csv") as file:
                 csv = file.read()
 
             # Create a download button
             st.download_button(
-                label="Download Input Template",
+                label="Download Sample Input",
                 data=csv,
                 file_name="batch_input_template.csv",
                 mime="text/csv",

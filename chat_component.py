@@ -1,6 +1,8 @@
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, db
+
+from get_reults import get_result
 from utilities import FIREBASE_CERT_CONFIG
 
 
@@ -17,6 +19,7 @@ initialize_firebase()
 
 
 def initialize_chat(conversation_key):
+    print(f'#1')
     if "messages" not in st.session_state:
         if conversation_key:
             st.session_state.messages = load_chat_history(conversation_key)
@@ -29,6 +32,7 @@ def initialize_chat(conversation_key):
 
 
 def load_chat_history(conversation_key):
+    print(f'#2')
     ref = db.reference(f"chats/{conversation_key}")
     data = ref.get()
     if data:
@@ -43,6 +47,7 @@ def save_chat_history(conversation_key):
 
 def chat_component(prompt, insight, conversation_key, def_message):
     initialize_chat(conversation_key)
+    print(f'#3')
     print("Chat component loaded with conversation key:", conversation_key)
 
     if len(st.session_state.messages) == 0:
