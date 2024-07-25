@@ -13,7 +13,8 @@ def analytics_tab():
     # Create two columns
     # Create two columns
     col1, col2 = st.columns([1, 1])
-    prompt = st.chat_input("Ask me anything!")
+
+    # prompt = st.chat_input("Ask me anything!")
     data = None
     fig = None
     response = None
@@ -21,12 +22,28 @@ def analytics_tab():
     inserted_key = None
     conv_key = None
     def_message = default_component()
-    if prompt:
+
+    # Check if there's a last prompt to run
+    if "last_prompt" in st.session_state:
+        prompt = st.session_state["last_prompt"]
+        del st.session_state["last_prompt"]  # Clear it after use
+
+        # Automatically run the last prompt
         data, fig, response, chart, x_column, y_columns = get_result(prompt)
-        dict_index = data.to_dict(orient="index")
-        inserted_key = insert_data_into_firebase(
-            prompt, dict_index, response, insight, chart, x_column, y_columns
-        )
+        if data is not None:
+            dict_index = data.to_dict(orient="index")
+            inserted_key = insert_data_into_firebase(
+                prompt, dict_index, response, insight, chart, x_column, y_columns
+            )
+    else:
+        prompt = st.chat_input("Ask me anything!")
+        if prompt:
+            data, fig, response, chart, x_column, y_columns = get_result(prompt)
+            if data is not None:
+                dict_index = data.to_dict(orient="index")
+                inserted_key = insert_data_into_firebase(
+                    prompt, dict_index, response, insight, chart, x_column, y_columns
+                )
 
     with col1:
         with st.container(height=580, border=True):
@@ -51,3 +68,7 @@ def analytics_tab():
             # with col2_3:
             #     if st.button("New Chat"):
             #         clear_conversation()
+
+    # If this is a loaded chat with results, update the UI
+    # if "selected_chat" in st.session_state and data is not None:
+    #     st.experimental_rerun()

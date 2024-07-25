@@ -92,6 +92,12 @@ def get_last_message_from_chats(user_chats):
             print(f"Chat ID {chat_id} has insufficient messages or empty messages")
     return last_messages
 
+def get_last_prompt(messages):
+    for message in reversed(messages):
+        if message["role"] == "user":
+            return message["content"]
+    return None
+
 def sidebar_component():
     if 'chats_to_display' not in st.session_state:
         st.session_state.chats_to_display = 5  # Start with showing 5 chats
@@ -133,4 +139,18 @@ def sidebar_component():
         if selected_chat_id:
             st.session_state["selected_chat"] = selected_chat_id
             print(f'selected chat - {selected_chat_id}')
-            st.session_state.messages = load_chat_history(selected_chat_id)
+            loaded_messages = load_chat_history(selected_chat_id)
+            st.session_state.messages = loaded_messages
+
+            # Get the last prompt from the loaded chat
+            last_prompt = get_last_prompt(loaded_messages)
+
+            if last_prompt:
+                # Store the last prompt in session state
+                st.session_state["last_prompt"] = last_prompt
+
+                # Set the conversation key
+                st.session_state["conversation_key"] = selected_chat_id
+
+                # Force a rerun to update the UI
+                st.rerun()

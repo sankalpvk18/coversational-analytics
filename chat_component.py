@@ -50,21 +50,29 @@ def chat_component(prompt, insight, conversation_key, def_message):
     print(f'#3')
     print("Chat component loaded with conversation key:", conversation_key)
 
-    if len(st.session_state.messages) == 0:
+    # Display existing messages
+    if not st.session_state.messages:
         st.markdown(def_message)
     else:
         for message in st.session_state.messages:
-            with st.chat_message(message["role"]):
-                st.markdown(message["content"])
+            if message is not None and isinstance(message, dict) and "role" in message and "content" in message:
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])
+            else:
+                print(f"Skipping invalid message: {message}")
 
+    # Handle new prompt or loaded last prompt
     if prompt:
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+        # Only add the prompt to messages if it's not already there
+        if not st.session_state.messages or st.session_state.messages[-1].get("content") != prompt:
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            with st.chat_message("user"):
+                st.markdown(prompt)
 
-        st.session_state.messages.append({"role": "assistant", "content": insight})
-        with st.chat_message("assistant"):
-            st.markdown(insight)
+        if insight:
+            st.session_state.messages.append({"role": "assistant", "content": insight})
+            with st.chat_message("assistant"):
+                st.markdown(insight)
 
         save_chat_history(st.session_state.conversation_key)
 
