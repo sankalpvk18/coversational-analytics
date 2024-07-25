@@ -35,6 +35,7 @@ def analytics_tab():
             inserted_key = insert_data_into_firebase(
                 prompt, dict_index, response, insight, chart, x_column, y_columns
             )
+        prompt = st.chat_input("Ask me anything!")
     else:
         prompt = st.chat_input("Ask me anything!")
         if prompt:
@@ -62,13 +63,3 @@ def analytics_tab():
 
             if st.button("New Chat"):
                 clear_conversation()
-
-            # col2_1, col2_2, col2_3 = st.columns([2, 1.65, 1.35], gap="large")
-            # col2_1, col2_2, col2_3 = st.columns([4.5, 1, 1.35], gap="large")
-            # with col2_3:
-            #     if st.button("New Chat"):
-            #         clear_conversation()
-
-    # If this is a loaded chat with results, update the UI
-    # if "selected_chat" in st.session_state and data is not None:
-    #     st.experimental_rerun()
