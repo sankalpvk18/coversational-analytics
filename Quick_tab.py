@@ -11,7 +11,9 @@ st.session_state.filename = ""
 
 @st.experimental_dialog("Data Sample", width="large")
 def showSample():
-    df = pd.read_csv(f"{st.session_state.uploaded_file_path}")
+    st.session_state.uploaded_file_path = "Sample - Superstore.csv"
+    # df = pd.read_csv(f"{st.session_state.uploaded_file_path}")
+    df = pd.read_csv(st.session_state.uploaded_file_path, encoding='ISO-8859-1')
     df = df.head()
     add_vertical_space(4)
     st.dataframe(df)
@@ -24,13 +26,13 @@ def quick_tab():
     result = None
     def_message = default_quick_component()
 
-    col1, col2 = st.columns([3, 1])
+    col1, col2 = st.columns([2, 1])
     prompt = st.chat_input("Ask me anything!", key="quick_chat_input")
     if prompt:
         result = run_quick_analysis(prompt)
 
     with col1:
-        with st.container(border=True, height=600):
+        with st.container(border=True, height=550):
             quick_chat_component(prompt, result, def_message)
 
     with col2:
